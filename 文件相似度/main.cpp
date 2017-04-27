@@ -20,7 +20,6 @@ int main()
 		equal_count++;
 	}
 	}
-	
 	final=double(equal_count)/double(count)*100;
 	cout<<final<<"%";
 	system("pause");
