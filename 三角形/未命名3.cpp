@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+
 class Triangle
 {
 	private:
@@ -30,12 +31,13 @@ void Triangle::get_data(double* triangle)
 	triangle[0]=a;
 	triangle[1]=b;
 	triangle[2]=c;
-}
+}	
+
 char* shape(Triangle& tri) 
 {	bool right_angle(double arr[]);
 	bool angle(double arr[]);
-    	char* _shape;
     	double* arr;
+    	char* _shape=new char[100];
     	tri.get_data(arr);
     	if(arr[0]==arr[1]&&arr[1]==arr[2])
         	_shape=(char*)"A equileteral triangle";
