@@ -74,6 +74,5 @@ void MyString::strcat(const MyString& a)
 }
 int main() 
 {	
-	MyString test1("hello");
 	return 0;
 }
