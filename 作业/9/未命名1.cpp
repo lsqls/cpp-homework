@@ -6,7 +6,7 @@ private:
 char *str;
 public:
 MyString(char *s);
-MyString(const MyString&);			// 拷贝构造函数
+//MyString(const MyString&);			// 拷贝构造函数
 int strlenth(void)const;			// 字符串长度
 int strcmpp(const MyString&) const;  // 比较字符串
 void strcpy(const MyString&);  // 拷贝字符串
@@ -25,10 +25,12 @@ MyString::MyString(char *s)
 }
 MyString::~MyString(){delete [] str;}
 int MyString::strlenth()const
-{	//str = new char[100];
+{
     int i=0;
 	while(*(str+i)!=' ')
-		i++;
+	{
+	i++;
+	}
 	return i;
 }
 int MyString::strcmpp(const MyString& a)const
@@ -55,10 +57,10 @@ void MyString::strcpy(const MyString& a)
 	*(s0+i)=*(s+i);
 	i++;
 	}
+	*(s0+i)='\0';
 }
 void MyString::strcat(const MyString& a)
-{	
-	str = new char[100];
+{	str = new char[100];
 	char* s0=this->str;
 	char* s=a.str;
     int i=0;
@@ -71,39 +73,32 @@ void MyString::strcat(const MyString& a)
 	 j++;
 	 i++;
 	}
+	*(s0+i)='\0';
 }
 void MyString::display()
 {
 	puts(str);
 }
-MyString::MyString(const MyString& a)
-{
-	str = new char[100];
-	char* s0=this->str;
-	char* s=a.str;
-    int i=0;
-	while(*(s+i)!=' ')
-	{
-	*(s0+i)=*(s+i);
-	i++;
-	}
-}
 int main() 
-{	char aa[100],bb[100];
+{	{char aa[100],bb[100];
 	cin >> aa>>bb;
-	MyString ss1(aa);
-	ss1.display();
-	MyString ss2(bb);
-	ss2.display();
-	MyString ss3(ss1);
-	ss3.display();
-	int n=ss1.strlenth();
+	MyString test1(aa);
+	test1.display();
+	MyString test2(bb);
+	test2.display();
+	MyString test3(test1);
+	test3.display();
+	int n=test1.strlenth();
 	cout << n << endl;
-    n=ss1.strcmpp(ss2);
+    n=test1.strcmpp(test2);
 	cout << n << endl;
-	ss1.strcpy(ss2);
-	ss1.display();
-	ss1.strcat(ss2);
-	ss1.display();
+/*	test1.strcpy(test2);
+	test1.display();
+	test1.strcat(test2);
+	test1.display();
+	test3.strcat(test1);//cat 函数有问题。。。。
+	test3.display();
+*/ }
 	return 0;
 }
+
